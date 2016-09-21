@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *  Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -13,7 +13,11 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+
 package org.wso2.carbon.kernel.startupresolver;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * RequiredCapabilityListener is a listener interface that may be implemented by a Carbon component developer. When
@@ -38,4 +42,15 @@ public interface RequiredCapabilityListener {
      * Receives a notification when all the required services are available in the OSGi service registry.
      */
     void onAllRequiredCapabilitiesAvailable();
+
+    /**
+     * Receives a notification with the list of required services when all the required services are available in the
+     * OSGi service registry.
+     *
+     * @param services List of OSGI services
+     */
+    default void onAllRequiredCapabilitiesAvailable(
+            Map<String, List> services
+    ) {
+    }
 }
